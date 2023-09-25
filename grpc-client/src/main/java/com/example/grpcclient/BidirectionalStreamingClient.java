@@ -52,5 +52,6 @@ public class BidirectionalStreamingClient {
             requestObserver.onNext(request);
         }
         scanner.close();
+        Thread.sleep(1000);
     }
 }

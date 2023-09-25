@@ -1,5 +1,5 @@
 plugins {
-    id 'application'
+    id 'java'
     id 'com.google.protobuf' version '0.9.4'
 }
 
@@ -33,4 +33,22 @@ protobuf {
     generateProtoTasks {
         all()*.plugins { grpc {} }
     }
+}
+
+task runSimpleRPC(type: JavaExec) {
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.example.grpcclient.SimpleRPC"
+}
+
+task runBidirectionalStreaming(type: JavaExec) {
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.example.grpcclient.BidirectionalStreamingClient"
+}
+
+task runStreaming(type: JavaExec) {
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+    main = "com.example.grpcclient.StreamingClient"
 }

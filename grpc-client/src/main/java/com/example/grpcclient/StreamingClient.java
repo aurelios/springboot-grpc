@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class StreamingClient {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()
                 .build();
@@ -52,5 +52,6 @@ public class StreamingClient {
         scanner.close();
         channel.shutdown();
         System.out.println("* Channel Closed * ");
+        Thread.sleep(1000);
     }
 }
